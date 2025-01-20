@@ -1,9 +1,11 @@
 import { useState } from "react"
 import axios from "axios";
+import { Link } from "react-router-dom";
 export default function Login(){
     const [email,setEmail] =  useState<string>("");
     const [password,setPassword] = useState<string>("");
     return <div>
+        
         <h1>Login Page</h1>
         <input type="email`" name="email" placeholder="Email" onChange={(e)=>{
             setEmail(e.target.value)
@@ -15,8 +17,9 @@ export default function Login(){
         <br />
 
         <button onClick={()=>handleLogin(email,password)}>Login</button>
-
-
+        
+        {/* <button onClick={()=>handleForgetPassword(email)}>Forgot Password</button> */}
+        <Link to="/forgot-password">Forgot Password</Link>
     </div>
 }
 
@@ -33,3 +36,4 @@ async function handleLogin(email:string,password:string){
     console.log("Token ",responceJson.token)
 
 }
+

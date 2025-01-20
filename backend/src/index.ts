@@ -2,25 +2,29 @@ import express from "express"
 import bodyParser from "body-parser";
 import cors from "cors"
 import rootRouter from "./api/index"
-import Users from "./db";
+import cookieSession from "cookie-session";
+import passport from "passport";
+import "./middlewares/passportSetup"
+
 const app = express();
 const PORT = 3000
+
 app.use(bodyParser.json());
 app.use(cors());
+app.use(
+    cookieSession({
+      maxAge: 24 * 60 * 60 * 1000, // 1 day
+      keys: ['yourRandomCookieKey'], // Use an environment variable for security
+    })
+  );
+
+  app.use(passport.initialize());
+app.use(passport.session());
 app.use("/api/v1",rootRouter);
 
 app.get('/',async(req:Request|any,res:Response|any)=>{
-    try{
-        const newUser = new Users({
-            name:"OmSharma",
-            email:"omsharma.8317333333@gmail.com",
-            password : "123444444"
-        })
-        await newUser.save();
-        return res.json({msg:"I am from Backend!"});
-    }catch(error){
-        return res.json({msg:error});    
-    }
+    
+    return res.json({msg:"I am from Backend!"});
     
 })
 

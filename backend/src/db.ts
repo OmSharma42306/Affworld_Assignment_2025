@@ -9,8 +9,6 @@ mongoose.connect(mongoUrl).then(()=>{
 })
 
 
-
-
 const userSchema = new mongoose.Schema({
     name : {
         type:String,
@@ -18,12 +16,19 @@ const userSchema = new mongoose.Schema({
     },
     email : {
         type : String,
-        required:true
+        required:true,
+        unique:true
     },
     password : {
         type : String,
         required:true
     },
+    otp:{
+        type:String,
+    },
+    otpExpiry : {
+        type:Date
+    }
 });
 
 const Users = mongoose.model('Users',userSchema);
