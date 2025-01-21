@@ -1,1 +1,1 @@
-{"root":["./src/config.ts","./src/db.ts","./src/emailservice.ts","./src/index.ts","./src/middleware.ts","./src/api/index.ts","./src/configs/keys.ts","./src/middlewares/passportsetup.ts","./src/routes/authroutes.ts","./src/routes/user.ts"],"version":"5.6.3"}
+{"root":["./src/config.ts","./src/db.ts","./src/emailservice.ts","./src/index.ts","./src/middleware.ts","./src/api/index.ts","./src/configs/keys.ts","./src/middlewares/passportsetup.ts","./src/models/tasks.ts","./src/routes/authroutes.ts","./src/routes/tasks.ts","./src/routes/user.ts"],"version":"5.6.3"}

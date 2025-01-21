@@ -5,7 +5,7 @@ export default function Register(){
     const[email,setEmail] = useState<string>("");
     const[password,setPassword] = useState<string>("");
     return <div>
-        <h1>Register Page</h1>
+        <h1 className="bg-red-400">Register Page</h1>
 
         <input type="text" name="name" placeholder="Name" onChange={(e)=>{
             setName(e.target.value)

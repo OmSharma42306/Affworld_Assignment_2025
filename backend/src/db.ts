@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv"
 
+
 dotenv.config();
 
 const mongoUrl = process.env.MONGODB_URI || "";
@@ -31,6 +32,11 @@ const userSchema = new mongoose.Schema({
     }
 });
 
+
+
+
 const Users = mongoose.model('Users',userSchema);
+
+
 
 export default Users;
