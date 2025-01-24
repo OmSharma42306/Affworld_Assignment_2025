@@ -1,11 +1,15 @@
 import express from "express"
-import { Router } from "express";
-
-const router = Router();
 import userRouter from "../routes/user"
-import authRouter from "../routes/authRoutes"
 import taskRouter from "../routes/tasks"
+import feedRouter from "../routes/feed"
+
+// Initializing a Base Router for All Routes
+const router = express.Router();
+
 router.use("/user",userRouter);
-router.use("/auth",authRouter)
 router.use("/task",taskRouter)
+router.use("/posts",feedRouter)
+
+
+// Exporting Base Router
 export default router;

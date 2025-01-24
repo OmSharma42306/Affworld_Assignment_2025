@@ -1,73 +1,55 @@
 import axios from "axios";
-import { useState } from "react"
+import { useState } from "react";
 import NewPassword from "./NewPassword";
-export default function VerifyOtp({email}:any){
-    const [otp,setOtp] = useState<string>("");
-    const [isVerified,setIsVerified] = useState<boolean>(false);
 
-    const handleVerifyOtp = async(otp:string,email:string) =>{
-        try{
-            const responce = await axios.post("http://localhost:3000/api/v1/user/verify-otp",{
-                email,
-                otp
-            })
-            const responceJson = await responce.data;
-            console.log(responceJson);
-            if(responceJson.status === "Success"){
-                console.log("HIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
-                setIsVerified(true);
-            }else{
-                alert('Invalid OTP')
-            }
-        }catch(error){
-            console.error(error)
-            alert("Error Verifying OTP")
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
+
+export default function VerifyOtp({ email }: any) {
+  const [otp, setOtp] = useState<string>("");
+  const [isVerified, setIsVerified] = useState<boolean>(false);
+
+  const handleVerifyOtp = async (otp: string, email: string) => {
+    try {
+      const response = await axios.post(
+        `${BACKEND_URL}/user/verify-otp`,
+        {
+          email,
+          otp,
         }
+      );
+      const responseJson = await response.data;
+      if (responseJson.status === "Success") {
+        setIsVerified(true);
+      } else {
+        alert("Invalid OTP");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Error Verifying OTP");
     }
+  };
 
-    return(
-        <div>
+  return (
+    <div className="mt-6">
       {isVerified ? (
-        <NewPassword email={email} /> // Render NewPassword if OTP is verified
+        <NewPassword email={email} />
       ) : (
-        <div>
+        <div className="flex flex-col">
           <input
             type="text"
             name="otp"
-            placeholder="Enter Otp"
-            onChange={(e) => {
-              setOtp(e.target.value);
-            }}
+            placeholder="Enter OTP"
+            className="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            onChange={(e) => setOtp(e.target.value)}
           />
           <button
-            onClick={() => {
-              handleVerifyOtp(otp, email);
-            }}
+            onClick={() => handleVerifyOtp(otp, email)}
+            className="bg-green-500 text-white rounded-lg px-4 py-2 hover:bg-green-600 transition"
           >
-            Verify Otp
+            Verify OTP
           </button>
         </div>
       )}
     </div>
-   
-   
-   
-   
-   
-    )
-    // ) <div>
-        
-    //     <input type="text" name="otp"placeholder="Enter Otp" onChange={(e)=>{
-    //         setOtp(e.target.value);
-    //     }}/>
-    //     <button onClick={()=>{
-    //         handleVerifyOtp(otp,email)
-    //     }}>Verify Otp</button>
-
-    // </div>
+  );
 }
-
-// async function handleVerifyOtp(otp:string,email:string){
-    
-    
-//}

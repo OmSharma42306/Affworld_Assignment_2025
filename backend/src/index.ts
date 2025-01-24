@@ -2,25 +2,22 @@ import express from "express"
 import bodyParser from "body-parser";
 import cors from "cors"
 import rootRouter from "./api/index"
-import cookieSession from "cookie-session";
-import passport from "passport";
-import "./middlewares/passportSetup"
 
+// Initializing Express App
 const app = express();
+// Defining PORT 
 const PORT = 3000
 
+// Using some middleware like bodyParser to read JSON from frontned 
 app.use(bodyParser.json());
-app.use(cors());
-app.use(
-    cookieSession({
-      maxAge: 24 * 60 * 60 * 1000, // 1 day
-      keys: ['yourRandomCookieKey'], // Use an environment variable for security
-    })
-  );
 
-  app.use(passport.initialize());
-app.use(passport.session());
+// using this to enable Cross-Origin Resource Sharing
+app.use(cors());
+
+// using the base Root Router.
 app.use("/api/v1",rootRouter);
+
+// Defining just basic route 
 
 app.get('/',async(req:Request|any,res:Response|any)=>{
     

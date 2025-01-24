@@ -1,0 +1,145 @@
+# Web Application: User Authentication, Task Management, and Feed
+
+## Project Description
+This is a full-stack web application that includes user authentication, a task management system, and a user feed. The application allows users to register and log in, manage tasks using drag-and-drop functionality, and post content with photos to a shared feed.
+
+## Features Implemented
+
+### 1. User Authentication
+- **Register**: Users can create an account using their name, email, and password.
+- **Login**: Users can log in using their email and password.
+- **Forgot Password**: Provides functionality to reset passwords.
+- **Google OAuth**: Implemented Google login integration using Firebase (Bonus).
+
+### 2. Task Management System
+- **Create Task**: Users can add tasks by providing a name and description.
+- **Task Columns**:
+  - Pending
+  - Completed
+  - Done
+- **Drag and Drop**: Tasks can be moved between columns using drag-and-drop, and the status is updated automatically.
+- **Delete Task**: Each task has a delete option. A confirmation is required before deletion.
+
+### 3. Feed Section
+- Users can post content, including a photo and a caption.
+- Photos are uploaded and retrieved using Cloudinary.
+
+### Additional Features
+- Simple and intuitive UI/UX design.
+- Reusable and well-structured code components.
+- Passwords are securely hashed using bcrypt.
+
+## Technologies Used
+- **Language**: TypeScript
+- **Frontend**: React.js
+- **Backend**: Node.js and Express.js
+- **Database**: MongoDB
+- **Drag-and-Drop**: react-beautiful-dnd
+- **Image Hosting**: Cloudinary
+- **Authentication**: bcrypt for password hashing and optional Google OAuth integration
+
+## Project Setup and Run Instructions
+
+### Prerequisites
+- Node.js installed
+- MongoDB setup (local or cloud)
+- Cloudinary account for image hosting
+
+### Steps to Run the Project
+
+1. **Clone the Repository**:
+   ```bash
+   git clone <repository-url>
+   cd <repository-directory>
+   ```
+
+2. **Install Dependencies**:
+   - Backend:
+     ```bash
+     cd backend
+     npm install
+     ```
+   - Frontend:
+     ```bash
+     cd frontend
+     npm install
+     ```
+
+3. **Set Up Environment Variables**:
+   Add a `.env` file in both the `backend` and `frontend` directories. For guidance, rename the `demo_env.txt` file to `.env` and populate it with the required values.
+
+   Example structure of `demo_env.txt`:
+
+   **Frontend Environment Variables:**
+   ```env
+   # BACKEND API's
+   VITE_API_URL=http://localhost:3000/api/v1/task
+   VITE_POSTS_URL=http://localhost:3000/api/v1/posts
+   VITE_BACKEND_URL=http://localhost:3000/api/v1
+   VITE_GOOGLE_LOGIN_URL=http://localhost:3000/api/v1/user/api/auth/google
+
+   # FIREBASE CONFIGURATIONS
+   VITE_FIREBASE_API_KEY=
+   VITE_FIREBASE_AUTH_DOMAIN=
+   VITE_FIREBASE_PROJECT_ID=
+   VITE_FIREBASE_STORAGE_BUCKET=
+   VITE_FIREBASE_MESSAGING_SENDER_ID=
+   VITE_FIREBASE_APP_ID=
+   VITE_FIREBASE_MEASUREMENT_ID=
+   ```
+
+   **Backend Environment Variables:**
+   ```env
+   # MongoDB URL
+   MONGODB_URI=mongoDBURL
+
+   # JWT_SECRET
+   JWT_SECRET=your-jwt-secret
+
+   # Cloudinary Config
+   cloud_name=
+   api_key=
+   api_secret=
+
+   # Email Service for Forgot Password
+   service=
+   user=
+   pass=
+
+   # Firebase Configuration for Adding Google Auth
+   project_id=
+   private_key=
+   client_email=
+   ```
+
+4. **Run the Backend**:
+   ```bash
+   cd backend
+   npm start
+   ```
+
+5. **Run the Frontend**:
+   ```bash
+   cd frontend
+   npm start
+   ```
+
+6. **Access the Application**:
+   Open your browser and navigate to `http://localhost:5173`.
+
+## Deployment
+The application is deployed on [Heroku/Vercel/Netlify] and can be accessed at:
+<deployed-url>
+
+## Folder Structure
+- **/backend**: Contains the Node.js and Express.js code.
+- **/frontend**: Contains the React.js code.
+
+## Acknowledgements
+- Drag-and-drop powered by `react-beautiful-dnd`
+- Image hosting via Cloudinary
+- Authentication using bcrypt and Google OAuth
+
+## Contact
+For any questions or feedback, please contact: <omsharma.83173@gmail.com>
+
