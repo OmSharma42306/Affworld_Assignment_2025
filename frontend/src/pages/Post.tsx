@@ -1,7 +1,7 @@
 import {  useState } from "react";
 import axios from "axios";
 import {jwtDecode} from "jwt-decode"; // Import jwt-decode
-
+import { Link } from "react-router-dom";
 const BACKEND_URL = import.meta.env.VITE_POSTS_URL 
 const Post  = () => {
   const [photo, setPhoto] = useState(null);
@@ -127,10 +127,17 @@ const Post  = () => {
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden">
         <div className="px-6 py-8">
+        <div className="flex justify-between items-center mb-8">
           <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">
             Create New Post
           </h2>
-
+          <Link
+              to="/dashboard"
+              className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-lg transition-colors"
+            >
+              Back
+            </Link>
+          </div>
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Photo Upload Section */}
             <div>
@@ -225,8 +232,10 @@ const Post  = () => {
                 : 'bg-green-50 text-green-700'
             }`}>
               <p className="text-sm font-medium">{message}</p>
+              
             </div>
           )}
+       
         </div>
       </div>
     </div>

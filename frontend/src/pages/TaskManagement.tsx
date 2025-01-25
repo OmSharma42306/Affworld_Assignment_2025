@@ -5,7 +5,7 @@ import { TaskForm } from '../components/TaskForm';
 import { TaskColumn } from '../components/TaskColumn';
 import { getTasks, createTask, updateTaskStatus, deleteTask } from '../api';
 import { Task } from '../types';
-
+import { Link } from 'react-router-dom';
 function TaskManagement() {
   const [tasks, setTasks] = useState<Task[]>([]); 
   const [firstTask,setFirstTask] = useState<boolean>(false);
@@ -79,7 +79,15 @@ function TaskManagement() {
       <DndProvider backend={HTML5Backend}>
         <div className="min-h-screen bg-gray-100 p-8">
           <div className="max-w-7xl mx-auto">
+          <div className="flex justify-between items-center mb-8">
             <h1 className="text-3xl font-bold text-gray-900 mb-8">Task Management System</h1>
+            <Link 
+                        to="/dashboard"
+                        className="bg-blue-500 hover:bg-blue-600 text-white mt-4 p-2 rounded-lg transition-colors"
+                    >
+                        Back
+                    </Link>
+                    </div>
             <TaskForm onSubmit={handleCreateTask} />
             <div className="grid grid-cols-3 gap-6">
               <TaskColumn

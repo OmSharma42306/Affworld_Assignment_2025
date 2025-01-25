@@ -17,7 +17,7 @@ const GoogleLogin = () =>{
             const responce = await axios.post(`${GOOGLELOGIN_URL}`,{
                 token
             });
-            if(responce.statusText === "OK"){
+            if(responce.data.message === "Authenticated"){
                 console.log("user authenticated!")
                 console.log(responce)
                 localStorage.setItem("token",token)
