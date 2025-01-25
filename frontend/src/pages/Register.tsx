@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserPlus, User, Mail, Lock } from "lucide-react";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 export default function Register() {
@@ -9,6 +9,7 @@ export default function Register() {
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,9 +17,9 @@ export default function Register() {
     setLoading(true);
 
     try {
-      const response = await handleRegister(name, email, password);
+       await handleRegister(name, email, password);
       // You might want to redirect here using react-router
-      window.location.href = "/login"; // Or use navigation from react-router
+       navigate("/login") // Or use navigation from react-router
     } catch (err: any) {
       setError(err.response?.data?.message || "An error occurred during registration");
     } finally {

@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { LogOut } from "lucide-react";
 
 export default function Dashboard() {
+
+  // creating a navigate using useNavigate hook. for navigating to other routes
   const navigate = useNavigate();
 
   const handleLogout = () => {

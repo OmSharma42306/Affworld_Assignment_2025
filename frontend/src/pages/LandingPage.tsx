@@ -51,6 +51,8 @@ export default function LandingPage() {
           <p className="text-xl text-gray-600 mb-8">
             A comprehensive solution featuring task management and social media integration
           </p>
+          <br />
+          * Note: it's Backend is Deployed on Free tier. so first time maybe it's take some time to respond.or you can refresh 30 seconds and server will be running.
         </div>
 
         {/* Auth Section */}
