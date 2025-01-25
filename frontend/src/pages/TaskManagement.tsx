@@ -16,6 +16,7 @@ function TaskManagement() {
      
   }, []);
 
+  // handling function for fetching all the tasks.
   const fetchTasks = async () => {
     try {
       const tasksData = await getTasks();
@@ -32,7 +33,7 @@ function TaskManagement() {
       console.error('Error fetching tasks:', error);
     }
   };
-
+  // function handler for Creating Tasks.
   const handleCreateTask = async (name: string, description: string) => {
     try {
       
@@ -49,6 +50,7 @@ function TaskManagement() {
     }
   };
 
+  // Task Moving Handling from One Section to another like with task status
   const handleTaskMove = async (taskId: string, newStatus: string) => {
     try {
       setTasks((prevTasks) =>
@@ -63,6 +65,7 @@ function TaskManagement() {
     }
   };
 
+  // Task Deletion Handling
   const handleDeleteTask = async (taskId: string) => {
     try {
       // Update local state first for immediate UI feedback
@@ -76,6 +79,7 @@ function TaskManagement() {
   };
   if(firstTask){
     return (
+      // adding DndProvider for Adding Drag and Drop Features to Task Page
       <DndProvider backend={HTML5Backend}>
         <div className="min-h-screen bg-gray-100 p-8">
           <div className="max-w-7xl mx-auto">
@@ -88,8 +92,10 @@ function TaskManagement() {
                         Back
                     </Link>
                     </div>
+            {/* Component of Creating Task */}
             <TaskForm onSubmit={handleCreateTask} />
             <div className="grid grid-cols-3 gap-6">
+              {/* Component of Columns sending task with it's status */}
               <TaskColumn
                 title="Pending"
                 status="pending"
@@ -97,6 +103,7 @@ function TaskManagement() {
                 onTaskMove={handleTaskMove}
                 onDelete={handleDeleteTask}
               />
+              {/* Component of Columns sending task with it's status */}
               <TaskColumn
                 title="Completed"
                 status="completed"
@@ -104,6 +111,7 @@ function TaskManagement() {
                 onTaskMove={handleTaskMove}
                 onDelete={handleDeleteTask}
               />
+              {/* Component of Columns sending task with it's status */}
               <TaskColumn
                 title="Done"
                 status="done"
@@ -118,6 +126,9 @@ function TaskManagement() {
     );
   }
   return <div>
+    {/* creating the tasks initially because above function fetches and render the existing tasks and gives a createTask component
+    to create the tasks. but this like initial user don't have any tasks. so initial user we have to render this createTask Component
+    only. */}
   <TaskForm onSubmit={handleCreateTask} />
 </div>
 }

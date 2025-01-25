@@ -128,6 +128,7 @@ export default function Register() {
   );
 }
 
+// handling Registration Tasks.
 async function handleRegister(name: string, email: string, password: string) {
   const response = await axios.post(`${BACKEND_URL}/user/signup`, {
     name,

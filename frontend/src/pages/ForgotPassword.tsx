@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import VerifyOtp from "../components/VerifyOtp";
 
+// Reading Base url from env
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 export default function ForgotPassword() {
@@ -31,6 +32,7 @@ export default function ForgotPassword() {
   );
 }
 
+// handling function for Forgot Password Stuff.
 async function handleForgotPassword(email: string) {
   const response = await axios.post(
     `${BACKEND_URL}/user/forgot-password`,
