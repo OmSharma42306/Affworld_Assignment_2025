@@ -1,4 +1,4 @@
-# Web Application: User Authentication, Task Management, and Feed
+# Web Application: User Authentication, Task Management, and Feed View. 
 
 ## Project Description
 This is a full-stack web application that includes user authentication, a task management system, and a user feed. The application allows users to register and log in, manage tasks using drag-and-drop functionality, and post content with photos to a shared feed.
@@ -141,5 +141,5 @@ The application is deployed on [Heroku/Vercel/Netlify] and can be accessed at:
 - Authentication using bcrypt and Google OAuth
 
 ## Contact
-For any questions or feedback, please contact: <omsharma.83173@gmail.com>
+For any questions or feedback, please contact: <omsharma.83173@gmail.com><https://x.com/OmSharma42306>
 
